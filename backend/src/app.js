@@ -5,9 +5,14 @@ import authRoutes from "./routes/auth.route.js";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import config from "./config/config.js";
-import sendEmail from "./utils/email.js";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
 
 app.use(morgan("dev"));
 app.use(express.json());
