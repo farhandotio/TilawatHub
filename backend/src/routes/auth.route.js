@@ -1,10 +1,11 @@
+// routes/auth.routes.js
 import express from "express";
 import * as authController from "../controllers/auth.controller.js";
 import * as validationRules from "../middlewares/validation.middleware.js";
-import passport from "passport";
 
 const router = express.Router();
 
+// Local auth
 router.post(
   "/register",
   validationRules.registerValidationRules,
@@ -17,17 +18,16 @@ router.post(
   authController.login
 );
 
-// Route to initiate Google OAuth flow
-router.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
+// Logout
+router.post("/logout", authController.logout);
 
-// Callback route that Google will redirect to after authentication
-router.get(
-  "/google/callback",
-  passport.authenticate("google", { session: false }),
-  authController.googleOAuthCallback
-);
+// Google OAuth: initiate (redirects to Google)
+router.get("/google", authController.googleAuth);
+
+// Google OAuth callback: handled inside controller (which uses passport)
+router.get("/google/callback", authController.googleOAuthCallback);
+
+// Protected route example: get current user
+router.get("/me", authController.authenticateJWT, authController.me);
 
 export default router;

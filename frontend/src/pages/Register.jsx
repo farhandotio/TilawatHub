@@ -61,7 +61,7 @@ export default function Register() {
       };
 
       const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
+        "https://tilawathub.onrender.com/api/auth/register",
         payload,
         { withCredentials: true }
       );
@@ -96,7 +96,7 @@ export default function Register() {
 
         <button
           onClick={() => {
-            window.location.href = "http://localhost:3000/api/auth/google";
+            window.location.href = "https://tilawathub.onrender.com/api/auth/google";
           }}
           type="button"
           className="w-full flex items-center justify-center gap-3 mb-4 px-4 py-2 rounded-md border border-border hover:bg-primary bg-input text-text hover:brightness-105 cursor-pointer"

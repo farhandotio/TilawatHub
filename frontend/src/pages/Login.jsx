@@ -18,7 +18,7 @@ export default function Login() {
       };
 
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        "https://tilawathub.onrender.com/api/auth/login",
         payload,
         { withCredentials: true }
       );
@@ -40,7 +40,7 @@ export default function Login() {
 
         <button
           onClick={() => {
-            window.location.href = "http://localhost:3000/api/auth/google";
+            window.location.href = "https://tilawathub.onrender.com/api/auth/google";
           }}
           type="button"
           className="w-full flex items-center justify-center gap-3 mb-4 px-4 py-2 rounded-md border border-border bg-input text-text hover:brightness-105"
